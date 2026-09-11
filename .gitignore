@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+*.pkl
+*.bin
+*.model
+.vscode/
+.env
+chroma_db/
+/backend/app/agents_old

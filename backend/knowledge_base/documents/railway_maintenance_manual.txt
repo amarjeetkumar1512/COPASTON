@@ -1,0 +1,260 @@
+COPASTON RAILWAY MAINTENANCE AND SAFETY MANUAL
+Document Type: Product Lifecycle, Safety and O&M Knowledge Base
+Version: 1.0
+System: COPASTON
+Equipment: Railway Maintenance and Inspection Vehicle
+
+
+1. PURPOSE
+
+This document provides basic maintenance, inspection and safety guidance
+for railway maintenance and inspection equipment managed through COPASTON.
+
+COPASTON uses this knowledge to support maintenance teams, safety teams and
+operators in identifying maintenance requirements, safety risks and
+recommended actions.
+
+
+2. PREVENTIVE MAINTENANCE
+
+Preventive maintenance should be performed according to the equipment
+maintenance schedule.
+
+The main preventive maintenance activities include:
+
+- Visual inspection of the complete machine.
+- Inspection of brake system components.
+- Inspection of hydraulic hoses and fittings.
+- Inspection of engine oil and coolant levels.
+- Inspection of electrical connections.
+- Inspection of battery condition.
+- Inspection of tyres, wheels and mechanical fasteners.
+- Inspection of safety guards and emergency stop devices.
+- Cleaning of important mechanical and electrical components.
+
+Any abnormal condition found during inspection should be recorded in the
+COPASTON maintenance system.
+
+
+3. BRAKE SYSTEM MAINTENANCE
+
+The brake system is a critical safety system.
+
+Brake inspection should include:
+
+- Checking brake response.
+- Checking brake hoses and connections.
+- Checking for hydraulic or pneumatic leakage.
+- Checking brake pads or brake components for excessive wear.
+- Checking brake fluid or brake system pressure according to equipment
+  requirements.
+
+If brake response is delayed, weak or abnormal, the equipment should not
+be operated until the problem has been investigated.
+
+A brake failure should be recorded as a high-priority safety incident.
+
+
+4. HYDRAULIC SYSTEM
+
+The hydraulic system should be inspected regularly.
+
+Maintenance personnel should check:
+
+- Hydraulic oil level.
+- Hydraulic hoses.
+- Hydraulic fittings.
+- Hydraulic cylinders.
+- Signs of oil leakage.
+- Abnormal noise during hydraulic operation.
+
+Hydraulic leakage should be treated as a safety and maintenance concern.
+
+Damaged hydraulic hoses should be replaced before the equipment is returned
+to normal operation.
+
+
+5. ENGINE AND POWER SYSTEM
+
+Engine inspection should include:
+
+- Engine oil level.
+- Coolant level.
+- Fuel system condition.
+- Unusual engine noise.
+- Leakage around the engine.
+- Battery and starting system condition.
+
+Low engine oil or coolant levels should be corrected before operation.
+
+Unusual engine noise or excessive leakage requires further inspection.
+
+
+6. ELECTRICAL SYSTEM
+
+Electrical inspection should include:
+
+- Battery terminals.
+- Electrical wiring.
+- Connectors.
+- Fuses.
+- Control switches.
+- Warning indicators.
+- Emergency stop system.
+
+Loose or damaged electrical connections should be repaired before operation.
+
+Electrical faults that affect machine control or safety systems should be
+treated as high-priority issues.
+
+
+7. SAFETY INSPECTION
+
+Before operating railway maintenance equipment, operators should perform
+a basic safety inspection.
+
+The inspection should verify:
+
+- Braking system is functioning.
+- Emergency stop system is functioning.
+- Warning indicators are working.
+- No visible hydraulic leakage is present.
+- No major mechanical damage is visible.
+- Safety guards are installed correctly.
+- Required maintenance is not overdue.
+
+The equipment should not be operated when a critical safety defect is
+identified.
+
+
+8. SAFETY INCIDENT SEVERITY
+
+Safety incidents can be classified using the following levels:
+
+LOW:
+Minor issue with limited operational impact.
+
+MEDIUM:
+Issue that may affect equipment performance and requires maintenance
+attention.
+
+HIGH:
+Issue that can create significant safety risk or equipment failure.
+
+CRITICAL:
+Condition that creates an immediate and serious safety risk. Equipment
+operation should be stopped until the condition is resolved.
+
+
+9. MAINTENANCE PRIORITY
+
+Maintenance priority should be based on safety impact and equipment
+condition.
+
+High-priority maintenance should be assigned when:
+
+- Brake performance is abnormal.
+- Critical hydraulic leakage is detected.
+- Emergency stop system fails.
+- Major electrical safety fault is detected.
+- A critical mechanical component is damaged.
+
+Routine inspection findings can be scheduled as preventive maintenance.
+
+
+10. MAINTENANCE RECORD
+
+Every maintenance activity should contain:
+
+- Product ID.
+- Maintenance type.
+- Description of work.
+- Maintenance due date.
+- Current maintenance status.
+
+Typical maintenance statuses are:
+
+PENDING:
+Maintenance is scheduled but not completed.
+
+IN PROGRESS:
+Maintenance activity is currently being performed.
+
+COMPLETED:
+Maintenance activity has been completed successfully.
+
+OVERDUE:
+Scheduled maintenance has passed its due date.
+
+
+11. SAFETY INCIDENT RECORD
+
+A safety incident should contain:
+
+- Product ID.
+- Incident type.
+- Severity.
+- Description.
+- Incident status.
+
+Typical incident statuses are:
+
+OPEN:
+Incident requires investigation or action.
+
+IN PROGRESS:
+Corrective action is being performed.
+
+RESOLVED:
+Corrective action has been completed.
+
+
+12. CORRECTIVE ACTION
+
+When a safety-critical problem is detected:
+
+1. Stop operation if continued operation may create additional risk.
+2. Record the safety incident.
+3. Identify the affected product.
+4. Inspect the affected system.
+5. Perform corrective maintenance.
+6. Verify that the problem has been resolved.
+7. Update the maintenance and safety records.
+8. Return the equipment to operation only after the required checks
+   are completed.
+
+
+13. COPASTON AI ASSISTANCE
+
+COPASTON can use this knowledge base to answer questions related to:
+
+- Product maintenance.
+- Preventive maintenance.
+- Brake inspection.
+- Hydraulic system inspection.
+- Engine inspection.
+- Electrical system safety.
+- Safety incident severity.
+- Maintenance priority.
+- Corrective action.
+
+Example question:
+
+"What should I do if the brake response is delayed?"
+
+Expected knowledge-based answer:
+
+"Delayed or abnormal brake response is a safety concern. The equipment
+should not be operated until the brake problem has been investigated.
+The incident should be recorded as a high-priority safety incident and
+appropriate corrective maintenance should be performed."
+
+
+14. IMPORTANT NOTE
+
+This document is a sample COPASTON demonstration knowledge base created
+for the project MVP.
+
+It is not an official railway authority maintenance manual and should not
+replace manufacturer instructions, approved maintenance procedures,
+engineering standards or applicable safety regulations.

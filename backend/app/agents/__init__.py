@@ -1,0 +1,1 @@
+from app.agents.product_agent import ProductLifecycleAgent, product_agent   
