@@ -1,0 +1,11 @@
+
+@"
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+python-dotenv
+requests
+chromadb
+sentence-transformers
+"@ | Set-Content requirements.txt
