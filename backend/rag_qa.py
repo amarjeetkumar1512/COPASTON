@@ -1,20 +1,15 @@
 import chromadb
 import requests
-from sentence_transformers import SentenceTransformer
 
 
 CHROMA_PATH = "./chroma_db"
 COLLECTION_NAME = "copaston_knowledge"
-
-MODEL_NAME = "all-MiniLM-L6-v2"
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "qwen2.5:0.5b"
 
 
 def search_knowledge(question, top_k=3):
-
-    model = SentenceTransformer(MODEL_NAME)
 
     client = chromadb.PersistentClient(
         path=CHROMA_PATH
@@ -24,16 +19,44 @@ def search_knowledge(question, top_k=3):
         name=COLLECTION_NAME
     )
 
-    question_embedding = model.encode(
-        [question]
-    ).tolist()
-
-    results = collection.query(
-        query_embeddings=question_embedding,
-        n_results=top_k
+    results = collection.get(
+        include=["documents"]
     )
 
-    return results["documents"][0]
+    documents = results.get("documents", [])
+
+    if not documents:
+        return []
+
+    question_words = set(
+        question.lower().split()
+    )
+
+    scored_documents = []
+
+    for document in documents:
+
+        document_words = set(
+            document.lower().split()
+        )
+
+        score = len(
+            question_words.intersection(document_words)
+        )
+
+        scored_documents.append(
+            (score, document)
+        )
+
+    scored_documents.sort(
+        key=lambda x: x[0],
+        reverse=True
+    )
+
+    return [
+        document
+        for score, document in scored_documents[:top_k]
+    ]
 
 
 def generate_answer(question, context):
@@ -90,4 +113,3 @@ if __name__ == "__main__":
     print("\nCOPASTON AI ANSWER")
     print("=" * 50)
     print(answer)
-    
