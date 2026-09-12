@@ -1,29 +1,89 @@
 import chromadb
-import requests
+from pathlib import Path
 
 
 CHROMA_PATH = "./chroma_db"
 COLLECTION_NAME = "copaston_knowledge"
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
-OLLAMA_MODEL = "qwen2.5:0.5b"
+DOCUMENT_PATH = Path(
+    "knowledge_base/documents/railway_maintenance_manual.txt"
+)
+
+CHUNK_SIZE = 800
+CHUNK_OVERLAP = 100
 
 
-def search_knowledge(question, top_k=3):
+def load_document():
+    if not DOCUMENT_PATH.exists():
+        raise FileNotFoundError(
+            f"Document not found: {DOCUMENT_PATH}"
+        )
 
+    return DOCUMENT_PATH.read_text(
+        encoding="utf-8"
+    )
+
+
+def split_into_chunks(text):
+    chunks = []
+
+    start = 0
+
+    while start < len(text):
+        end = start + CHUNK_SIZE
+
+        chunk = text[start:end].strip()
+
+        if chunk:
+            chunks.append(chunk)
+
+        start += CHUNK_SIZE - CHUNK_OVERLAP
+
+    return chunks
+
+
+def get_knowledge_collection():
     client = chromadb.PersistentClient(
         path=CHROMA_PATH
     )
 
-    collection = client.get_collection(
+    collection = client.get_or_create_collection(
         name=COLLECTION_NAME
     )
+
+    # Load knowledge automatically if collection is empty
+    if collection.count() == 0:
+
+        document_text = load_document()
+
+        chunks = split_into_chunks(
+            document_text
+        )
+
+        if chunks:
+            collection.add(
+                ids=[
+                    f"knowledge_{i}"
+                    for i in range(len(chunks))
+                ],
+                documents=chunks
+            )
+
+    return collection
+
+
+def search_knowledge(question, top_k=3):
+
+    collection = get_knowledge_collection()
 
     results = collection.get(
         include=["documents"]
     )
 
-    documents = results.get("documents", [])
+    documents = results.get(
+        "documents",
+        []
+    )
 
     if not documents:
         return []
@@ -41,7 +101,9 @@ def search_knowledge(question, top_k=3):
         )
 
         score = len(
-            question_words.intersection(document_words)
+            question_words.intersection(
+                document_words
+            )
         )
 
         scored_documents.append(
@@ -55,44 +117,25 @@ def search_knowledge(question, top_k=3):
 
     return [
         document
-        for score, document in scored_documents[:top_k]
+        for score, document
+        in scored_documents[:top_k]
+        if score > 0
     ]
 
 
 def generate_answer(question, context):
 
-    prompt = f"""
-You are COPASTON, an AI assistant for railway
-product safety and maintenance.
+    if not context:
+        return (
+            "The requested information is not "
+            "available in the COPASTON knowledge base."
+        )
 
-Answer the user's question using ONLY the
-provided knowledge.
-
-If the answer is not available in the knowledge,
-say that the information is not available.
-
-Knowledge:
-{context}
-
-User Question:
-{question}
-
-Provide a clear and practical answer.
-"""
-
-    response = requests.post(
-        OLLAMA_URL,
-        json={
-            "model": OLLAMA_MODEL,
-            "prompt": prompt,
-            "stream": False
-        },
-        timeout=120
+    return (
+        "According to the COPASTON railway "
+        "maintenance knowledge base:\n\n"
+        + "\n\n".join(context)
     )
-
-    response.raise_for_status()
-
-    return response.json()["response"]
 
 
 if __name__ == "__main__":
@@ -101,13 +144,13 @@ if __name__ == "__main__":
         "What should I do if the brake response is delayed?"
     )
 
-    documents = search_knowledge(question)
-
-    context = "\n\n".join(documents)
+    documents = search_knowledge(
+        question
+    )
 
     answer = generate_answer(
         question,
-        context
+        documents
     )
 
     print("\nCOPASTON AI ANSWER")
