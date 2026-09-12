@@ -1,3 +1,4 @@
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -27,8 +28,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "http://127.0.0.1:5173"
-        "https://copaston.vercel.app/ ",
+        "http://127.0.0.1:5173",
+        "https://copaston.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -56,3 +57,4 @@ def home():
     return {
         "message": "COPASTON API is running successfully!"
     }
+
