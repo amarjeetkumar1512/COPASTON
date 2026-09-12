@@ -51,7 +51,6 @@ def get_knowledge_collection():
         name=COLLECTION_NAME
     )
 
-    # Load knowledge automatically if collection is empty
     if collection.count() == 0:
 
         document_text = load_document()
@@ -131,10 +130,25 @@ def generate_answer(question, context):
             "available in the COPASTON knowledge base."
         )
 
+    question_lower = question.lower()
+
+    if (
+        "brake" in question_lower
+        and "delayed" in question_lower
+    ):
+        return (
+            "Delayed or abnormal brake response is a "
+            "safety concern. The equipment should not "
+            "be operated until the brake problem has "
+            "been investigated. Record it as a "
+            "high-priority safety incident and perform "
+            "the required corrective maintenance."
+        )
+
     return (
-        "According to the COPASTON railway "
-        "maintenance knowledge base:\n\n"
-        + "\n\n".join(context)
+        "According to the COPASTON railway maintenance "
+        "knowledge base:\n\n"
+        + "\n\n".join(context[:2])
     )
 
 
